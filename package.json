@@ -1,17 +1,18 @@
 {
   "name": "Simon-Says",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Put in a sentence and see what comes out of it, full of surprises!",
   "main": "index.js",
   "scripts": {
-    "watch": "nodemon ./start.js"
+    "watch": "nodemon ./start.js",
+    "start": "node start.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PXMYH/Simon-Says.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Michael Hu",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/PXMYH/Simon-Says/issues"
