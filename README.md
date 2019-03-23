@@ -15,3 +15,10 @@ run docker image:
 ```bash
 docker run -d --name simon-says -p 7777:3000 simon-says
 ```
+
+## Deploy to Heroku
+
+```bash
+heroku create simon-says
+git push heroku master
+```

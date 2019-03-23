@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "watch": "nodemon ./start.js",
-    "start": "node start.js"
+    "start": "node start.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PXMYH/Simon-Says.git"
   },
-  "keywords": [],
+  "keywords": [
+    "nodejs",
+    "heroku"
+  ],
   "author": "Michael Hu",
   "license": "MIT",
   "bugs": {
@@ -30,5 +34,8 @@
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
+  },
+  "engines": {
+    "node": "11.x"
   }
 }
