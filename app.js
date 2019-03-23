@@ -15,6 +15,10 @@ app.set("view engine", "pug");
 // parse content
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// routing
 app.use("/", routes);
+
+// static content
+app.use(express.static("public"));
 
 module.exports = app;
