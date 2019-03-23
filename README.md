@@ -32,3 +32,9 @@ heroku create --manifest
 ```
 
 Set up Heroku deployment connected to GitHub and set app automatic deployment only triggers if CI passes
+
+## Development
+
+```bash
+npm run watch
+```

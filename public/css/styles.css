@@ -7,21 +7,21 @@ body {
   margin: 0 0 2rem;
 }
 
-/* css for registration form and errors*/
-.form-registration {
+/* css for translation form and errors*/
+.form-translation {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
 }
-.form-registration {
+.form-translation {
   display: flex;
   flex-wrap: wrap;
 }
-.form-registration input {
+.form-translation input {
   width: 100%;
   margin: 0px 0 10px;
 }
-.form-registration .btn {
+.form-translation .btn {
   flex: 1 0 100%;
 }
 .my-errors {

@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const auth = require("http-auth");
+const { body, validationResult } = require("express-validator/check");
 
 var thesaurus = require("thesaurus-synonyms");
 
@@ -68,16 +69,33 @@ async function convertParagraph(paragraph) {
 
 // temporarily disable authentication due to Heroku https
 // router.get("/", auth.connect(basic), (req, res) => {
-//   res.render("form", { title: "Registration form" });
+//   res.render("form", { title: "translation form" });
 // });
 
 router.get("/", (req, res) => {
-  res.render("form", { title: "Registration form" });
+  res.render("form", { title: "translation form" });
 });
 
-router.post("/", (req, res) => {
-  convertParagraph(req.body);
-  res.render("form", { title: "Registration form" });
-});
+router.post(
+  "/",
+  [
+    body("paragraph")
+      .isLength({ min: 1 })
+      .withMessage("Please enter at least a word")
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (errors.isEmpty()) {
+      res.send("Thank you for your contribution!");
+    } else {
+      convertParagraph(req.body);
+      res.render("form", {
+        title: "translation form",
+        errors: errors.array(),
+        data: req.body
+      });
+    }
+  }
+);
 
 module.exports = router;

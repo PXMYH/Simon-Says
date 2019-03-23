@@ -2,14 +2,14 @@ extends layout
 
 block content
 
-  if registrations.length
+  if translations.length
     table.listing-table.table-dark.table-striped
       tr
         th Name
         //- th Email
-      each registration in registrations
+      each translation in translations
         tr
           td= registration.paragraph
           //- td= registration.email
   else
-    p No registrations yet :(
+    p No translations yet :(

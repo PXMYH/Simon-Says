@@ -8,7 +8,7 @@ block content
       for error in errors
         li= error.msg
 
-  form(action="." method="POST" class="form-registration")
+  form(action="." method="POST" class="form-translation")
     label(for="paragraph") You Say:
     input(
       type="text"
@@ -18,17 +18,23 @@ block content
       value=data.paragraph
     )
 
-    //- label(for="email") Email:
-    //- input(
-    //-   type="email"
-    //-   id="email"
-    //-   name="email"
-    //-   class="form-control"
-    //-   value=data.email
-    //- )
-
     input(
       type="submit"
       value="Translate"
+      class="btn btn-lg btn-primary btn-block"
+      )
+
+    label(for="insights") Simon Says:
+    input(
+      type="text"
+      id="insights"
+      name="insights"
+      class="form-control"
+      value=data.insights
+    )
+
+    input(
+      type="submit"
+      value="clear"
       class="btn btn-lg btn-primary btn-block"
       )
