@@ -1,7 +1,7 @@
 {
   "name": "Simon-Says",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Put in a sentence and see what comes out of it, full of surprises!",
   "main": "index.js",
   "scripts": {
     "watch": "nodemon ./start.js"
@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/PXMYH/Simon-Says#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "pug": "^2.0.3",
+    "thesaurus-com": "^1.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
