@@ -20,3 +20,5 @@ services:
 
 after_success:
   - docker build -t coeus77/simon-says .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push coeus77/simon-says
