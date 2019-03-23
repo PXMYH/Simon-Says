@@ -5,7 +5,11 @@ sudo: false
 language: node_js
 
 # Set the node.js version to 11
-node_js: 11
+node_js:
+  - "10"
+
+# cache dependency
+cache: npm
 
 # Install the codecov pip dependency
 install:
