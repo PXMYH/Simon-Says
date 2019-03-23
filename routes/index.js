@@ -35,7 +35,7 @@ function splitWords(sentence) {
 }
 
 async function findThesaurus(word) {
-  console.log(word);
+  console.log("finding thesaurus for word: " + word);
 
   // use cortical.io, as of Mar 22, 2019 10:20pm Thesaurus.com API is not responding
   // with any results
@@ -49,7 +49,7 @@ async function findThesaurus(word) {
 }
 
 function sanitizeParagragh(json) {
-  value = json["name"];
+  value = json["paragraph"];
   var content = JSON.stringify(value);
   return content;
 }
