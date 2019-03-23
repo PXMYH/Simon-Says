@@ -22,3 +22,8 @@ https://stackoverflow.com/questions/46756653/submitting-form-data-without-leavin
 https://stackoverflow.com/questions/1200266/submit-a-form-using-jquery
 https://stackoverflow.com/questions/31885425/receive-data-in-ajax-call-back-from-server-without-reloading-and-update-current
 https://stackoverflow.com/questions/52122677/how-to-refresh-form-page-after-post-request
+
+## Resources
+
+https://www.sitepoint.com/build-simple-beginner-app-node-bootstrap-mongodb/
+https://libraries.io/npm/natural

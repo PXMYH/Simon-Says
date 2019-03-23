@@ -56,16 +56,19 @@ function sanitizeParagragh(json) {
 }
 
 async function convertParagraph(input) {
-  console.log(input);
-  var sanitizedParagraph = sanitizeParagragh(paragraph);
+  console.log("input to be converted " + input);
+  var output = input;
+  var sanitizedParagraph = sanitizeParagragh(input);
   var words = splitWords(sanitizedParagraph);
   var kidParagraph = "";
   for (const word of words) {
     translatedWord = await findThesaurus(word);
     kidParagraph += " " + translatedWord;
   }
-  console.log("converted insights = " + kidParagraph);
-  return kidParagraph;
+  output["insights"] = kidParagraph;
+  console.log("Final output = " + JSON.stringify(output));
+
+  return output;
 }
 
 // temporarily disable authentication due to Heroku https
@@ -84,23 +87,25 @@ router.post(
       .isLength({ min: 1 })
       .withMessage("Please enter at least a word")
   ],
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-      var wisdom = convertParagraph(req.body);
+      var response_data = req.body;
+
+      const wisdom = await convertParagraph(req.body).then(
+        result => result.insights
+      );
+      console.log("Final response data: " + wisdom);
 
       // put insights data
-      req.body["insights"] = "Sample Response";
-      console.log("insights received = " + req.body["insights"]);
-      var response_data = req.body;
-      console.log("Final response data: " + response_data);
+      // response_data["insights"] = "Sample Response";
+      response_data["insights"] = wisdom;
 
       res.render("form", {
         title: "translation form",
         errors: errors.array(),
         data: response_data
       });
-      // res.send("Thank you for your contribution!");
     } else {
       res.render("form", {
         title: "translation form",
