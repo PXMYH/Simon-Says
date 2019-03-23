@@ -6,7 +6,7 @@ language: node_js
 
 # Set the node.js version to 11
 node_js:
-  - "10"
+  - "11"
 
 # cache dependency
 cache: npm
