@@ -1,7 +1,14 @@
 const express = require("express");
+const path = require("path");
+const auth = require("http-auth");
+
 var tcom = require("thesaurus-com");
 
 const router = express.Router();
+
+const basic = auth.basic({
+  file: path.join(__dirname, "../users.htpasswd")
+});
 
 function sayNothing(blah) {
   console.log(blah);
@@ -32,7 +39,8 @@ function findThesaurus(word) {
   thesaurusList = tcom.search(word)["synonyms"];
   console.log("Thesaurus List" + thesaurusList);
   // use the first one
-  thesaurusList = "test"
+  thesaurusList = "test";
+}
 
 function convertParagraph(paragraph) {
   console.log(paragraph);
@@ -41,7 +49,7 @@ function convertParagraph(paragraph) {
   words.forEach(findThesaurus(element));
 }
 
-router.get("/", (req, res) => {
+router.get("/", auth.connect(basic), (req, res) => {
   res.render("form", { title: "Registration form" });
 });
 

@@ -20,6 +20,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "http-auth": "^3.2.3",
     "pug": "^2.0.3",
     "sentence-tokenizer": "^1.0.1",
     "thesaurus-com": "^1.2.1"
