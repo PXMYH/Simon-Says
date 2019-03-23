@@ -2,7 +2,10 @@ const express = require("express");
 const path = require("path");
 const auth = require("http-auth");
 
-var tcom = require("thesaurus-com");
+var thesaurus = require("thesaurus-synonyms");
+
+var natural = require("natural");
+var tokenizer = new natural.WordTokenizer();
 
 const router = express.Router();
 
@@ -17,36 +20,50 @@ function sayNothing(blah) {
 function splitSentences(paragraph) {
   console.log(paragraph);
 
-  tokenizer.setEntry(paragraph);
-  var sentences = tokenizer.getTokens();
-
+  sentences = tokenizer.tokenize(paragraph);
   console.log(sentences);
+
   return sentences;
 }
 
 function splitWords(sentence) {
   console.log(sentence);
 
-  tokenizer.setEntry(sentence);
-  var words = tokenizer.getTokens();
-
+  words = tokenizer.tokenize(sentence);
   console.log(words);
   return words;
 }
 
-function findThesaurus(word) {
+async function findThesaurus(word) {
   console.log(word);
-  thesaurusList = tcom.search(word)["synonyms"];
-  console.log("Thesaurus List" + thesaurusList);
-  // use the first one
-  thesaurusList = "test";
+
+  // use cortical.io, as of Mar 22, 2019 10:20pm Thesaurus.com API is not responding
+  // with any results
+  // very intellegent algorithm, ALWAYS use the first word returned :)
+
+  var response = await thesaurus.similar(word).then(function(result) {
+    return result[0];
+  });
+
+  return response;
 }
 
-function convertParagraph(paragraph) {
+function sanitizeParagragh(json) {
+  value = json["name"];
+  var content = JSON.stringify(value);
+  return content;
+}
+
+async function convertParagraph(paragraph) {
   console.log(paragraph);
-  var sentences = splitSentences(paragraph);
-  var words = splitWords(sentences);
-  words.forEach(findThesaurus(element));
+  var sanitizedParagraph = sanitizeParagragh(paragraph);
+  var words = splitWords(sanitizedParagraph);
+  var kidParagraph = "";
+  for (const word of words) {
+    translatedWord = await findThesaurus(word);
+    kidParagraph += " " + translatedWord;
+  }
+  console.log("final converted paragraph = " + kidParagraph);
 }
 
 router.get("/", auth.connect(basic), (req, res) => {
@@ -54,7 +71,7 @@ router.get("/", auth.connect(basic), (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  sayNothing(req.body);
+  convertParagraph(req.body);
   res.render("form", { title: "Registration form" });
 });
 
