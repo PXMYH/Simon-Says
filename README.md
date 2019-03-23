@@ -23,6 +23,12 @@ Manually
 ```bash
 heroku create simon-says
 git push heroku master
+
+# create manifest from app
+heroku manifest:create
+
+# create app from manifest
+heroku create --manifest
 ```
 
 Set up Heroku deployment connected to GitHub and set app automatic deployment only triggers if CI passes
