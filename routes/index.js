@@ -66,7 +66,12 @@ async function convertParagraph(paragraph) {
   console.log("final converted paragraph = " + kidParagraph);
 }
 
-router.get("/", auth.connect(basic), (req, res) => {
+// temporarily disable authentication due to Heroku https
+// router.get("/", auth.connect(basic), (req, res) => {
+//   res.render("form", { title: "Registration form" });
+// });
+
+router.get("/", (req, res) => {
   res.render("form", { title: "Registration form" });
 });
 
