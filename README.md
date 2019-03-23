@@ -1,5 +1,7 @@
 # Simon-Says
 
+[![Build Status](https://travis-ci.com/PXMYH/Simon-Says.svg?branch=master)](https://travis-ci.com/PXMYH/Simon-Says)
+
 ## run the app
 
 run locally:
