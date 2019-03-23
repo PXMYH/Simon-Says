@@ -55,8 +55,8 @@ function sanitizeParagragh(json) {
   return content;
 }
 
-async function convertParagraph(paragraph) {
-  console.log(paragraph);
+async function convertParagraph(input) {
+  console.log(input);
   var sanitizedParagraph = sanitizeParagragh(paragraph);
   var words = splitWords(sanitizedParagraph);
   var kidParagraph = "";
@@ -64,7 +64,8 @@ async function convertParagraph(paragraph) {
     translatedWord = await findThesaurus(word);
     kidParagraph += " " + translatedWord;
   }
-  console.log("final converted paragraph = " + kidParagraph);
+  console.log("converted insights = " + kidParagraph);
+  return kidParagraph;
 }
 
 // temporarily disable authentication due to Heroku https
@@ -86,9 +87,21 @@ router.post(
   (req, res) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-      res.send("Thank you for your contribution!");
+      var wisdom = convertParagraph(req.body);
+
+      // put insights data
+      req.body["insights"] = "Sample Response";
+      console.log("insights received = " + req.body["insights"]);
+      var response_data = req.body;
+      console.log("Final response data: " + response_data);
+
+      res.render("form", {
+        title: "translation form",
+        errors: errors.array(),
+        data: response_data
+      });
+      // res.send("Thank you for your contribution!");
     } else {
-      convertParagraph(req.body);
       res.render("form", {
         title: "translation form",
         errors: errors.array(),

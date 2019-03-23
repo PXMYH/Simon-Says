@@ -11,6 +11,7 @@ app.set("view engine", "pug");
 
 // parse content
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // routing
 app.use("/", routes);
