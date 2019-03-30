@@ -72,9 +72,9 @@ async function convertParagraph(input) {
 }
 
 // temporarily disable authentication due to Heroku https
-// router.get("/", auth.connect(basic), (req, res) => {
-//   res.render("form", { title: "translation form" });
-// });
+ router.get("/", auth.connect(basic), (req, res) => {
+   res.render("form", { title: "translation form" });
+ });
 
 router.get("/", (req, res) => {
   res.render("form", { title: "translation form" });
