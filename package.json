@@ -28,7 +28,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-validator": "^6.0.0",
-    "http-auth": "^3.2.4",
+    "http-auth": "^4.0.0",
     "natural": "^0.6.3",
     "pug": "^2.0.3",
     "sentence-tokenizer": "^1.0.1",
