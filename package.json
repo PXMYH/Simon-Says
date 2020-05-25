@@ -30,7 +30,7 @@
     "express-validator": "^6.0.0",
     "http-auth": "^4.0.0",
     "natural": "^0.6.3",
-    "pug": "^2.0.3",
+    "pug": "^3.0.0",
     "sentence-tokenizer": "^1.0.1",
     "thesaurus-com": "^1.2.1",
     "thesaurus-synonyms": "^2.1.3",
