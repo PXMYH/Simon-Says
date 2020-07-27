@@ -1,6 +1,6 @@
 # Simon-Says
 
-[![Build Status](https://travis-ci.com/PXMYH/Simon-Says.svg?branch=master)](https://travis-ci.com/PXMYH/Simon-Says) [![Known Vulnerabilities](https://snyk.io/test/github/PXMYH/Simon-Says/badge.svg)](https://snyk.io/test/github/PXMYH/Simon-Says) [![Greenkeeper badge](https://badges.greenkeeper.io/PXMYH/Simon-Says.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/PXMYH/Simon-Says.svg?branch=master)](https://travis-ci.com/PXMYH/Simon-Says) [![Known Vulnerabilities](https://snyk.io/test/github/PXMYH/Simon-Says/badge.svg)](https://snyk.io/test/github/PXMYH/Simon-Says)
 
 ## run the app
 
